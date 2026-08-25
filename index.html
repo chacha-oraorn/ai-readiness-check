@@ -174,6 +174,12 @@
     box-shadow:var(--shadow);
   }
   .step-card.q1-special{border-left-color:var(--amber-700);background:var(--amber-50);}
+  .step-card.severity-high{
+    border-left-color:var(--red);
+    background:var(--red-bg);
+  }
+  .step-card.severity-high .step-pillar{color:var(--red);}
+  .step-card.severity-high .step-pillar::before{content:"⚠️ ";}
   .step-pillar{font-size:12px;font-weight:700;color:var(--amber-700);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;}
   .step-text{font-size:14.5px;color:var(--ink);line-height:1.6;margin:0;}
 
@@ -494,7 +500,7 @@
       'ระบบ: ' + pillars.system + '/6, ' +
       'บุคลากร: ' + pillars.people + '/6 | ' +
       'จุดอ่อนสุด: ' + PILLAR_NAMES[weakestKey] +
-      (ans.q1 === 0 ? ' | หมายเหตุ: ยังไม่ระบุโจทย์ AI ชัดเจน (Q1=0)' : '') +
+      (ans.q1 <= 1 ? ' | หมายเหตุ: ยังไม่ระบุโจทย์ AI ชัดเจน (Q1=' + ans.q1 + ')' : '') +
       ' | คำตอบดิบ: ' + rawAnswers;
 
     // Verdict
@@ -512,7 +518,7 @@
     const stepsWrap = document.getElementById('stepsWrap');
     stepsWrap.innerHTML = '';
 
-    if(ans.q1 === 0){
+    if(ans.q1 <= 1){
       const div = document.createElement('div');
       div.className = 'step-card q1-special';
       div.innerHTML = '<div class="step-pillar">🎯 เริ่มจากโจทย์ก่อน</div><p class="step-text">' + Q1_SPECIAL_TEXT + '</p>';
@@ -524,7 +530,7 @@
       const band = getLevelBand(pillars[key]);
       const text = PILLAR_STEPS[key][band];
       const div = document.createElement('div');
-      div.className = 'step-card';
+      div.className = 'step-card' + (band === 'low' ? ' severity-high' : '');
       div.innerHTML = '<div class="step-pillar">' + PILLAR_NAMES[key] + '</div><p class="step-text">' + text + '</p>';
       stepsWrap.appendChild(div);
     });
