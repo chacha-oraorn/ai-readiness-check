@@ -249,7 +249,6 @@
   }
   .consent-row input{margin-top:3px;accent-color:var(--amber-600);flex-shrink:0;}
   .intro-btn-row{text-align:center;}
-  .intro-skip-row{text-align:center;margin-top:12px;}
 
   .back-row{margin-bottom:14px;}
   .back-link{
@@ -281,10 +280,10 @@
   <p class="subtitle">ประเมินความพร้อมเบื้องต้นก่อนก้าวเข้าสู่การนำ AI มาใช้ในคลังสินค้าของคุณ — ใช้เวลาไม่ถึง 2 นาที</p>
   <p class="meta-line">8 คำถาม · ผลลัพธ์ทันที</p>
 
-  <!-- INTRO / RAFFLE OPT-IN -->
+  <!-- INTRO (mandatory identification + optional raffle opt-in) -->
   <div id="introSection" class="intro-card">
-    <div class="intro-raffle-badge">🎁 ร่วมลุ้นรางวัลได้ง่ายๆ</div>
-    <p class="intro-raffle-desc">กรอกชื่อและบริษัทเพื่อร่วมลุ้นรับของรางวัลจากทีม Fortience<br>(ประกาศผลผู้โชคดีสดหน้างานก่อนจบสัมมนา)</p>
+    <div class="intro-raffle-badge">📋 กรุณากรอกข้อมูลก่อนเริ่มทำแบบประเมิน</div>
+    <p class="intro-raffle-desc">กรอกชื่อและบริษัทของท่านก่อนเริ่มทำแบบประเมิน<br>หากยินยอม ข้อมูลนี้จะถูกใช้ร่วมลุ้นรับของรางวัลจากทีม Fortience ด้วย (ประกาศผลผู้โชคดีสดหน้างานก่อนจบสัมมนา)</p>
 
     <div class="intro-field">
       <label for="introName">ชื่อ-นามสกุล <span class="req-mark">*</span></label>
@@ -297,14 +296,11 @@
 
     <label class="consent-row">
       <input type="checkbox" id="introConsent">
-      <span>ยินยอมให้ Fortience เก็บข้อมูลนี้เพื่อใช้ในการจับรางวัลเท่านั้น จะไม่ถูกใช้เพื่อการขายหรือส่งต่อให้บุคคลอื่น และจะถูกลบภายใน 30 วันหลังงาน</span>
+      <span>ยินยอมให้ Fortience ใช้ข้อมูลนี้เพื่อร่วมลุ้นรางวัล — จะไม่ถูกใช้เพื่อการขายหรือส่งต่อให้บุคคลอื่น และจะถูกลบภายใน 30 วันหลังงาน</span>
     </label>
 
     <div class="intro-btn-row">
       <button type="button" id="introStartBtn" class="btn" disabled>เริ่มทำแบบประเมิน</button>
-    </div>
-    <div class="intro-skip-row">
-      <button type="button" id="introSkipBtn" class="restart-link">ไม่อยากร่วมลุ้นรางวัล? ข้าม ทำแบบประเมินอย่างเดียว</button>
     </div>
   </div>
 
@@ -384,10 +380,10 @@
       <div class="q" data-q="q5">
         <p class="q-text">Q5. งานในคลังพึ่งระบบดิจิทัลมากแค่ไหน?</p>
         <div class="options">
-          <label class="opt"><input type="radio" name="q5" value="0">ทำมือ/กระดาษเป็นหลัก</label>
-          <label class="opt"><input type="radio" name="q5" value="1">มีระบบบางส่วน ยังใช้มือคู่กันเยอะ</label>
-          <label class="opt"><input type="radio" name="q5" value="2"><span class="opt-body">มี WMS/ERP ใช้จริงในงานหลัก <span class="opt-hint">(ตัวอย่าง: มี WMS ใช้จัดการ stock และ order หลัก แต่การนับสต็อกจริง (cycle count) ยังใช้กระดาษ)</span></span></label>
-          <label class="opt"><input type="radio" name="q5" value="3"><span class="opt-body">ระบบครอบคลุม เป็น backbone ของงาน <span class="opt-hint">(ตัวอย่าง: WMS ผูกกับทุกขั้นตอนรวมถึง cycle count และ QC แล้ว ถ้าระบบล่มคลังหยุดทำงานทันที)</span></span></label>
+          <label class="opt"><input type="radio" name="q5" value="0"><span class="opt-body">ทำมือ/กระดาษเป็นหลัก <span class="opt-hint">(~0-20% ของงาน)</span></span></label>
+          <label class="opt"><input type="radio" name="q5" value="1"><span class="opt-body">มีระบบบางส่วน ยังใช้มือคู่กันเยอะ <span class="opt-hint">(~20-50% ของงาน)</span></span></label>
+          <label class="opt"><input type="radio" name="q5" value="2"><span class="opt-body">มี WMS/ERP ใช้จริงในงานหลัก <span class="opt-hint">(~50-80% ของงาน · ตัวอย่าง: มี WMS ใช้จัดการ stock และ order หลัก แต่การนับสต็อกจริง (cycle count) ยังใช้กระดาษ)</span></span></label>
+          <label class="opt"><input type="radio" name="q5" value="3"><span class="opt-body">ระบบครอบคลุม เป็น backbone ของงาน <span class="opt-hint">(~80-100% ของงาน · ตัวอย่าง: WMS ผูกกับทุกขั้นตอนรวมถึง cycle count และ QC แล้ว ถ้าระบบล่มคลังหยุดทำงานทันที)</span></span></label>
         </div>
       </div>
 
@@ -488,11 +484,10 @@
   const progressText = document.getElementById('progressText');
   const totalQ = 8;
 
-  // ---- Intro / raffle opt-in ----
+  // ---- Intro (mandatory name/company + optional raffle consent) ----
   let introName = '';
   let introCompany = '';
   let introConsented = false;
-  let introSkipped = false;
 
   const introSection = document.getElementById('introSection');
   const mainSection = document.getElementById('mainSection');
@@ -500,31 +495,23 @@
   const introCompanyInput = document.getElementById('introCompany');
   const introConsentBox = document.getElementById('introConsent');
   const introStartBtn = document.getElementById('introStartBtn');
-  const introSkipBtn = document.getElementById('introSkipBtn');
 
   function updateIntroBtn(){
+    // Required fields gate the Start button. The raffle consent checkbox is
+    // intentionally NOT part of this check — requiring it here would make
+    // "consent" coerced (no way to proceed without it), which defeats the
+    // point of it being voluntary. Consent only controls the later silent
+    // raffle submission, never whether someone can take the assessment.
     const filled = introNameInput.value.trim() !== '' && introCompanyInput.value.trim() !== '';
-    introStartBtn.disabled = !(filled && introConsentBox.checked);
+    introStartBtn.disabled = !filled;
   }
   introNameInput.addEventListener('input', updateIntroBtn);
   introCompanyInput.addEventListener('input', updateIntroBtn);
-  introConsentBox.addEventListener('change', updateIntroBtn);
 
   introStartBtn.addEventListener('click', function(){
     introName = introNameInput.value.trim();
     introCompany = introCompanyInput.value.trim();
     introConsented = introConsentBox.checked;
-    introSkipped = false;
-    introSection.style.display = 'none';
-    mainSection.style.display = 'block';
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-
-  introSkipBtn.addEventListener('click', function(){
-    introName = '';
-    introCompany = '';
-    introConsented = false;
-    introSkipped = true;
     introSection.style.display = 'none';
     mainSection.style.display = 'block';
     window.scrollTo({top:0, behavior:'smooth'});
@@ -828,7 +815,7 @@
   const ENTRY_RAFFLE_COMPANY = 'entry.433686641';
 
   function maybeOpenRaffleForm(){
-    if(introSkipped || !introConsented || !introName || !introCompany) return;
+    if(!introConsented || !introName || !introCompany) return;
     const body = new URLSearchParams();
     body.set(ENTRY_RAFFLE_NAME, introName);
     body.set(ENTRY_RAFFLE_COMPANY, introCompany);
