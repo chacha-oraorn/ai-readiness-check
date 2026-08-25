@@ -103,6 +103,7 @@
   .opt:hover{border-color:var(--amber-400);background:var(--amber-50);}
   .opt input{margin-top:3px;accent-color:var(--amber-600);flex-shrink:0;}
   .opt.checked{border-color:var(--amber-500);background:var(--amber-50);color:var(--ink);}
+  .opt-body{flex:1;}
   .opt-hint{display:block;font-size:12.5px;color:var(--ink-soft);opacity:0.75;margin-top:2px;font-weight:400;}
 
   .submit-row{margin-top:12px;text-align:center;}
@@ -329,8 +330,8 @@
         <div class="options">
           <label class="opt"><input type="radio" name="q1" value="0">ยังไม่ชัด อยากมีเพราะเห็นคนอื่นทำ / เป็นนโยบายสั่งลงมา</label>
           <label class="opt"><input type="radio" name="q1" value="1">มีไอเดียกว้างๆ ว่าอยากให้ช่วยด้านไหน แต่ยังไม่เจาะจง</label>
-          <label class="opt"><input type="radio" name="q1" value="2">ระบุปัญหา/จุดที่อยากปรับได้ชัด แต่ยังไม่ได้ประเมินคุณค่า</label>
-          <label class="opt"><input type="radio" name="q1" value="3">ระบุ use case ชัด + รู้ว่าถ้าแก้ได้คุ้มค่าเท่าไร <span class="opt-hint">(เช่น ประหยัดเวลา/ลดต้นทุน/ลดของเสีย)</span></label>
+          <label class="opt"><input type="radio" name="q1" value="2"><span class="opt-body">ระบุปัญหา/จุดที่อยากปรับได้ชัด แต่ยังไม่ได้ประเมินคุณค่า <span class="opt-hint">(ตัวอย่าง: รู้ว่าอยากลดเวลาหยิบสินค้า แต่ยังไม่รู้ว่าลดได้กี่นาทีหรือคุ้มกี่บาท)</span></span></label>
+          <label class="opt"><input type="radio" name="q1" value="3"><span class="opt-body">ระบุ use case ชัด + รู้ว่าถ้าแก้ได้คุ้มค่าเท่าไร <span class="opt-hint">(ตัวอย่าง: ลดเวลาหยิบสินค้าจาก 10 นาทีเหลือ 3 นาที ประหยัดค่าแรงได้ ~500,000 บาท/ปี)</span></span></label>
         </div>
       </div>
 
@@ -385,8 +386,8 @@
         <div class="options">
           <label class="opt"><input type="radio" name="q5" value="0">ทำมือ/กระดาษเป็นหลัก</label>
           <label class="opt"><input type="radio" name="q5" value="1">มีระบบบางส่วน ยังใช้มือคู่กันเยอะ</label>
-          <label class="opt"><input type="radio" name="q5" value="2">มี WMS/ERP ใช้จริงในงานหลัก</label>
-          <label class="opt"><input type="radio" name="q5" value="3">ระบบครอบคลุม เป็น backbone ของงาน</label>
+          <label class="opt"><input type="radio" name="q5" value="2"><span class="opt-body">มี WMS/ERP ใช้จริงในงานหลัก <span class="opt-hint">(ตัวอย่าง: มี WMS ใช้จัดการ stock และ order หลัก แต่การนับสต็อกจริง (cycle count) ยังใช้กระดาษ)</span></span></label>
+          <label class="opt"><input type="radio" name="q5" value="3"><span class="opt-body">ระบบครอบคลุม เป็น backbone ของงาน <span class="opt-hint">(ตัวอย่าง: WMS ผูกกับทุกขั้นตอนรวมถึง cycle count และ QC แล้ว ถ้าระบบล่มคลังหยุดทำงานทันที)</span></span></label>
         </div>
       </div>
 
@@ -395,7 +396,7 @@
         <div class="options">
           <label class="opt"><input type="radio" name="q6" value="0">ต่างคนต่างอยู่ ต้อง key ซ้ำ</label>
           <label class="opt"><input type="radio" name="q6" value="1">เชื่อมบางส่วน ยังมี manual เชื่อม</label>
-          <label class="opt"><input type="radio" name="q6" value="2">ระบบหลักเชื่อมกันได้</label>
+          <label class="opt"><input type="radio" name="q6" value="2"><span class="opt-body">ระบบหลักเชื่อมกันได้ <span class="opt-hint">(ตัวอย่าง: ระบบคลังกับระบบขาย/บัญชี เชื่อมกันอัตโนมัติ)</span></span></label>
           <label class="opt"><input type="radio" name="q6" value="3">เชื่อมทั้งหมด ข้อมูลไหลอัตโนมัติ</label>
         </div>
       </div>
