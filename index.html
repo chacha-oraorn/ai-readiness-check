@@ -103,6 +103,7 @@
   .opt:hover{border-color:var(--amber-400);background:var(--amber-50);}
   .opt input{margin-top:3px;accent-color:var(--amber-600);flex-shrink:0;}
   .opt.checked{border-color:var(--amber-500);background:var(--amber-50);color:var(--ink);}
+  .opt-hint{display:block;font-size:12.5px;color:var(--ink-soft);opacity:0.75;margin-top:2px;font-weight:400;}
 
   .submit-row{margin-top:12px;text-align:center;}
   .btn{
@@ -163,6 +164,7 @@
     display:flex;flex-direction:column;align-items:center;gap:18px;
   }
   .radar-legend{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;}
+  .radar-caption{font-size:12px;color:var(--ink-soft);opacity:0.7;text-align:center;margin:0;max-width:280px;}
   .legend-item{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink-soft);}
   .legend-dot{width:9px;height:9px;border-radius:2px;background:var(--amber-500);}
   .legend-pct{font-weight:700;color:var(--ink);}
@@ -174,12 +176,6 @@
     box-shadow:var(--shadow);
   }
   .step-card.q1-special{border-left-color:var(--amber-700);background:var(--amber-50);}
-  .step-card.severity-high{
-    border-left-color:var(--red);
-    background:var(--red-bg);
-  }
-  .step-card.severity-high .step-pillar{color:var(--red);}
-  .step-card.severity-high .step-pillar::before{content:"⚠️ ";}
   .step-pillar{font-size:12px;font-weight:700;color:var(--amber-700);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;}
   .step-text{font-size:14.5px;color:var(--ink);line-height:1.6;margin:0;}
 
@@ -207,6 +203,15 @@
     text-decoration:underline;cursor:pointer;font-family:'Sarabun',sans-serif;
   }
 
+  .save-pdf-row{text-align:center;margin-bottom:20px;}
+  .btn-ghost-save{
+    background:#fff;color:var(--amber-700);border:1.5px solid var(--amber-300,var(--amber-400));
+    padding:11px 26px;border-radius:12px;cursor:pointer;
+    font-family:'Sarabun',sans-serif;font-weight:600;font-size:14.5px;
+    box-shadow:var(--shadow);
+  }
+  .btn-ghost-save:hover{background:var(--amber-50);}
+
   footer{
     text-align:center;font-size:12.5px;color:var(--ink-soft);opacity:0.6;
     margin-top:50px;
@@ -216,6 +221,55 @@
     .wrap{padding:24px 16px 60px;}
     .verdict-card{padding:24px 18px;}
   }
+
+  /* Intro / raffle opt-in card */
+  .intro-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:24px 22px;margin-bottom:20px;box-shadow:var(--shadow);
+  }
+  .intro-raffle-badge{
+    display:inline-block;font-size:14px;font-weight:700;color:var(--amber-700);
+    background:var(--amber-100);border:1px solid var(--amber-200);
+    padding:6px 14px;border-radius:100px;margin-bottom:12px;
+  }
+  .intro-raffle-desc{font-size:14px;color:var(--ink-soft);line-height:1.6;margin:0 0 18px;}
+  .intro-field{margin-bottom:14px;}
+  .intro-field label{display:block;font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+  .req-mark{color:var(--red);}
+  .intro-input{
+    width:100%;padding:11px 13px;border-radius:10px;border:1.5px solid var(--line);
+    font-family:'Sarabun',sans-serif;font-size:14.5px;color:var(--ink);
+    box-sizing:border-box;
+  }
+  .intro-input:focus{outline:none;border-color:var(--amber-500);background:var(--amber-50);}
+  .consent-row{
+    display:flex;align-items:flex-start;gap:10px;margin:16px 0 18px;
+    font-size:13px;color:var(--ink-soft);line-height:1.6;cursor:pointer;
+  }
+  .consent-row input{margin-top:3px;accent-color:var(--amber-600);flex-shrink:0;}
+  .intro-btn-row{text-align:center;}
+  .intro-skip-row{text-align:center;margin-top:12px;}
+
+  .back-row{margin-bottom:14px;}
+  .back-link{
+    background:none;border:none;color:var(--ink-soft);font-size:13px;
+    cursor:pointer;font-family:'Sarabun',sans-serif;padding:4px 0;
+  }
+  .back-link:hover{color:var(--amber-700);}
+
+  /* Print styles: keep only the results content, drop interactive chrome */
+  @media print{
+    body{background:#fff;}
+    .eyebrow, .subtitle, .meta-line, .progress-track, .progress-label,
+    #quizForm, .save-pdf-row, .cta-block, .restart-row, .suggest-questions,
+    #introSection, #backRow{
+      display:none !important;
+    }
+    .wrap{padding:0;max-width:100%;}
+    .verdict-card, .radar-wrap, .step-card, .closing-note{
+      box-shadow:none;break-inside:avoid;
+    }
+  }
 </style>
 </head>
 <body>
@@ -224,7 +278,40 @@
   <div class="eyebrow">Warehouse Automation Trap · Seminar Tool</div>
   <h1>AI Readiness <em>Quick Check</em></h1>
   <p class="subtitle">ประเมินความพร้อมเบื้องต้นก่อนก้าวเข้าสู่การนำ AI มาใช้ในคลังสินค้าของคุณ — ใช้เวลาไม่ถึง 2 นาที</p>
-  <p class="meta-line">8 คำถาม · ผลลัพธ์ทันที · ไม่มีการบันทึกข้อมูลระหว่างทำแบบประเมิน</p>
+  <p class="meta-line">8 คำถาม · ผลลัพธ์ทันที</p>
+
+  <!-- INTRO / RAFFLE OPT-IN -->
+  <div id="introSection" class="intro-card">
+    <div class="intro-raffle-badge">🎁 ร่วมลุ้นรางวัลได้ง่ายๆ</div>
+    <p class="intro-raffle-desc">กรอกชื่อและบริษัทเพื่อร่วมลุ้นรับของรางวัลจากทีม Fortience<br>(ประกาศผลผู้โชคดีสดหน้างานก่อนจบสัมมนา)</p>
+
+    <div class="intro-field">
+      <label for="introName">ชื่อ-นามสกุล <span class="req-mark">*</span></label>
+      <input type="text" id="introName" class="intro-input" placeholder="เช่น สมชาย ใจดี">
+    </div>
+    <div class="intro-field">
+      <label for="introCompany">บริษัท/องค์กร <span class="req-mark">*</span></label>
+      <input type="text" id="introCompany" class="intro-input" placeholder="เช่น ABC Logistics">
+    </div>
+
+    <label class="consent-row">
+      <input type="checkbox" id="introConsent">
+      <span>ยินยอมให้ Fortience เก็บข้อมูลนี้เพื่อใช้ในการจับรางวัลเท่านั้น จะไม่ถูกใช้เพื่อการขายหรือส่งต่อให้บุคคลอื่น และจะถูกลบภายใน 30 วันหลังงาน</span>
+    </label>
+
+    <div class="intro-btn-row">
+      <button type="button" id="introStartBtn" class="btn" disabled>เริ่มทำแบบประเมิน</button>
+    </div>
+    <div class="intro-skip-row">
+      <button type="button" id="introSkipBtn" class="restart-link">ไม่อยากร่วมลุ้นรางวัล? ข้าม ทำแบบประเมินอย่างเดียว</button>
+    </div>
+  </div>
+
+  <div id="mainSection" style="display:none;">
+
+  <div class="back-row" id="backRow">
+    <button type="button" id="backToIntroBtn" class="back-link">← กลับไปหน้าก่อน</button>
+  </div>
 
   <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
   <div class="progress-label"><span id="progressText">ตอบแล้ว 0 / 8</span><span>เริ่มได้เลย</span></div>
@@ -243,7 +330,7 @@
           <label class="opt"><input type="radio" name="q1" value="0">ยังไม่ชัด อยากมีเพราะเห็นคนอื่นทำ / เป็นนโยบายสั่งลงมา</label>
           <label class="opt"><input type="radio" name="q1" value="1">มีไอเดียกว้างๆ ว่าอยากให้ช่วยด้านไหน แต่ยังไม่เจาะจง</label>
           <label class="opt"><input type="radio" name="q1" value="2">ระบุปัญหา/จุดที่อยากปรับได้ชัด แต่ยังไม่ได้ประเมินคุณค่า</label>
-          <label class="opt"><input type="radio" name="q1" value="3">ระบุ use case ชัด + รู้ว่าถ้าแก้ได้คุ้มค่าเท่าไร</label>
+          <label class="opt"><input type="radio" name="q1" value="3">ระบุ use case ชัด + รู้ว่าถ้าแก้ได้คุ้มค่าเท่าไร <span class="opt-hint">(เช่น ประหยัดเวลา/ลดต้นทุน/ลดของเสีย)</span></label>
         </div>
       </div>
 
@@ -361,6 +448,7 @@
     <div class="radar-wrap">
       <svg id="radarSvg" width="300" height="300" viewBox="0 0 300 300"></svg>
       <div class="radar-legend" id="radarLegend"></div>
+      <p class="radar-caption">เส้นประ = เกณฑ์ขั้นต่ำ (67%) ที่ต้องถึงในทุกด้าน เพื่อพ้นระดับ "ต้องเสริมฐานก่อน"</p>
     </div>
 
     <p class="section-label">ก้าวต่อไปที่ควรทำ</p>
@@ -368,6 +456,10 @@
 
     <div class="closing-note">
       ผลนี้มาจากการประเมินตัวเอง 8 ข้อ — บอกภาพคร่าวๆ ได้ แต่ถ้าอยากรู้ว่าจริงๆ พร้อมแค่ไหนและควรเริ่มตรงไหน ต้องดู data จริงกับหน้างาน
+    </div>
+
+    <div class="save-pdf-row">
+      <button class="btn-ghost-save" id="savePdfBtn" type="button">📄 บันทึกผลเป็น PDF</button>
     </div>
 
     <div class="cta-block">
@@ -381,7 +473,10 @@
     </div>
   </div>
 
-  <footer>Fortience Consulting · Warehouse &amp; AI Readiness Tool · ข้อมูลของท่านไม่ถูกบันทึกระหว่างทำแบบประเมิน</footer>
+  </div>
+  <!-- /mainSection -->
+
+  <footer>Fortience Consulting · Warehouse &amp; AI Readiness Tool · คำตอบแบบประเมินของท่านไม่ถูกบันทึกไว้ที่ใด — ข้อมูลชื่อ-บริษัท (หากร่วมลุ้นรางวัล) จะถูกใช้เพื่อจับรางวัลเท่านั้น</footer>
 </div>
 
 <script>
@@ -391,6 +486,60 @@
   const progressFill = document.getElementById('progressFill');
   const progressText = document.getElementById('progressText');
   const totalQ = 8;
+
+  // ---- Intro / raffle opt-in ----
+  let introName = '';
+  let introCompany = '';
+  let introConsented = false;
+  let introSkipped = false;
+
+  const introSection = document.getElementById('introSection');
+  const mainSection = document.getElementById('mainSection');
+  const introNameInput = document.getElementById('introName');
+  const introCompanyInput = document.getElementById('introCompany');
+  const introConsentBox = document.getElementById('introConsent');
+  const introStartBtn = document.getElementById('introStartBtn');
+  const introSkipBtn = document.getElementById('introSkipBtn');
+
+  function updateIntroBtn(){
+    const filled = introNameInput.value.trim() !== '' && introCompanyInput.value.trim() !== '';
+    introStartBtn.disabled = !(filled && introConsentBox.checked);
+  }
+  introNameInput.addEventListener('input', updateIntroBtn);
+  introCompanyInput.addEventListener('input', updateIntroBtn);
+  introConsentBox.addEventListener('change', updateIntroBtn);
+
+  introStartBtn.addEventListener('click', function(){
+    introName = introNameInput.value.trim();
+    introCompany = introCompanyInput.value.trim();
+    introConsented = introConsentBox.checked;
+    introSkipped = false;
+    introSection.style.display = 'none';
+    mainSection.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  introSkipBtn.addEventListener('click', function(){
+    introName = '';
+    introCompany = '';
+    introConsented = false;
+    introSkipped = true;
+    introSection.style.display = 'none';
+    mainSection.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // ---- Back to intro (from the quiz page) ----
+  document.getElementById('backToIntroBtn').addEventListener('click', function(){
+    // restore whatever was entered/chosen before, so the person doesn't retype
+    introNameInput.value = introName;
+    introCompanyInput.value = introCompany;
+    introConsentBox.checked = introConsented;
+    updateIntroBtn();
+    mainSection.style.display = 'none';
+    introSection.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
 
   // ---- Progress tracking ----
   function updateProgress(){
@@ -485,6 +634,7 @@
     // above. No separate override is needed — verified by exhaustive testing.
 
     renderResults(pillars, total, level, ans);
+    maybeOpenRaffleForm();
   });
 
   function renderResults(pillars, total, level, ans){
@@ -530,7 +680,7 @@
       const band = getLevelBand(pillars[key]);
       const text = PILLAR_STEPS[key][band];
       const div = document.createElement('div');
-      div.className = 'step-card' + (band === 'low' ? ' severity-high' : '');
+      div.className = 'step-card';
       div.innerHTML = '<div class="step-pillar">' + PILLAR_NAMES[key] + '</div><p class="step-text">' + text + '</p>';
       stepsWrap.appendChild(div);
     });
@@ -539,6 +689,7 @@
     form.style.display = 'none';
     document.querySelector('.progress-track').style.display = 'none';
     document.querySelector('.progress-label').style.display = 'none';
+    document.getElementById('backRow').style.display = 'none';
     document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
   }
 
@@ -572,6 +723,21 @@
       poly.setAttribute('stroke-width', '1');
       svg.appendChild(poly);
     });
+
+    // threshold reference line at raw=4 (4/6 ≈ 67%) — the weakest-link cutoff
+    // used in verdict scoring: any pillar below this line locks the result to L1/L2
+    // regardless of how strong the other pillars are.
+    const THRESHOLD_FRAC = 4/6;
+    const thresholdPts = [];
+    for(let i=0;i<n;i++){ thresholdPts.push(pointFor(i, THRESHOLD_FRAC).join(',')); }
+    const thresholdPoly = document.createElementNS(ns, 'polygon');
+    thresholdPoly.setAttribute('points', thresholdPts.join(' '));
+    thresholdPoly.setAttribute('fill', 'none');
+    thresholdPoly.setAttribute('stroke', '#b45309');
+    thresholdPoly.setAttribute('stroke-width', '1.5');
+    thresholdPoly.setAttribute('stroke-dasharray', '4,3');
+    thresholdPoly.setAttribute('opacity', '0.6');
+    svg.appendChild(thresholdPoly);
 
     // axis lines
     for(let i=0;i<n;i++){
@@ -638,14 +804,48 @@
   // ---- CTA button: opens Google Form with prefilled assessment summary ----
   const GOOGLE_FORM_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSeosDweJeZ1sQ6BbudVVZZnLMf_MGwP__9yjmComi6KcXlukQ/viewform';
   const ENTRY_SUMMARY = 'entry.1570940706';
+  const ENTRY_DEEP_NAME = 'entry.2079944124';
+  const ENTRY_DEEP_COMPANY = 'entry.139027544';
 
   let lastResultSummary = '';
 
   document.getElementById('ctaBtn').addEventListener('click', function(){
     const url = new URL(GOOGLE_FORM_BASE);
     url.searchParams.set(ENTRY_SUMMARY, lastResultSummary);
+    if(introName) url.searchParams.set(ENTRY_DEEP_NAME, introName);
+    if(introCompany) url.searchParams.set(ENTRY_DEEP_COMPANY, introCompany);
     url.searchParams.set('usp', 'pp_url');
     window.open(url.toString(), '_blank');
+  });
+
+  // ---- Raffle entry: submitted silently in the background once results are
+  // shown (no tab opens, no redirect — the person stays on their own results
+  // the whole time). Only fires if they opted in during intro and didn't skip.
+  const RAFFLE_FORM_ID = '1FAIpQLScwug1P5rjpXmVhucYRsDglxcPlhho7zOE11Va0f7PMBKtH2A';
+  const RAFFLE_FORM_RESPONSE_URL = 'https://docs.google.com/forms/d/e/' + RAFFLE_FORM_ID + '/formResponse';
+  const ENTRY_RAFFLE_NAME = 'entry.699240967';
+  const ENTRY_RAFFLE_COMPANY = 'entry.433686641';
+
+  function maybeOpenRaffleForm(){
+    if(introSkipped || !introConsented || !introName || !introCompany) return;
+    const body = new URLSearchParams();
+    body.set(ENTRY_RAFFLE_NAME, introName);
+    body.set(ENTRY_RAFFLE_COMPANY, introCompany);
+    // no-cors: we can't read the response (Google Forms doesn't send CORS
+    // headers), but the submission still goes through server-side. Failures
+    // are swallowed on purpose — a raffle-entry hiccup must never block or
+    // interrupt the person from seeing their own assessment results.
+    fetch(RAFFLE_FORM_RESPONSE_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: body.toString()
+    }).catch(function(){ /* silently ignore — raffle entry is a bonus, not critical */ });
+  }
+
+  // ---- Save as PDF (uses browser print; dedicated print CSS hides UI chrome) ----
+  document.getElementById('savePdfBtn').addEventListener('click', function(){
+    window.print();
   });
 
   // ---- Restart ----
@@ -655,6 +855,7 @@
     form.style.display = 'block';
     document.querySelector('.progress-track').style.display = 'block';
     document.querySelector('.progress-label').style.display = 'flex';
+    document.getElementById('backRow').style.display = 'block';
     updateProgress();
     window.scrollTo({top:0, behavior:'smooth'});
   });
