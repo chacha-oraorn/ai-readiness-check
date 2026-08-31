@@ -337,7 +337,7 @@
           <label class="opt"><input type="radio" name="q2" value="0">แล้วแต่คน แต่ละกะทำไม่เหมือนกัน</label>
           <label class="opt"><input type="radio" name="q2" value="1">มี SOP แต่จริงๆ ไม่ค่อยได้ทำตาม</label>
           <label class="opt"><input type="radio" name="q2" value="2">มี SOP ชัดและทำตามเป็นส่วนใหญ่ แต่ยังไม่วัดผล</label>
-          <label class="opt"><input type="radio" name="q2" value="3">process นิ่ง มีตัวชี้วัด ทบทวนสม่ำเสมอ</label>
+          <label class="opt"><input type="radio" name="q2" value="3">กระบวนการหลักมีมาตรฐาน มีตัวชี้วัด และทบทวนปรับปรุงอย่างสม่ำเสมอ</label>
         </div>
       </div>
     </div>
@@ -355,7 +355,7 @@
           <label class="opt"><input type="radio" name="q3" value="0">ต้องเดินไปนับเอง ระบบกับของจริงไม่ตรงบ่อย</label>
           <label class="opt"><input type="radio" name="q3" value="1">มีบันทึกแต่คลาดเคลื่อนบ่อย ต้องคอยแก้</label>
           <label class="opt"><input type="radio" name="q3" value="2">ค่อนข้างตรง มีตรวจสอบเป็นระยะ</label>
-          <label class="opt"><input type="radio" name="q3" value="3">แม่นยำ update real-time เชื่อถือได้</label>
+          <label class="opt"><input type="radio" name="q3" value="3">ข้อมูลมีความถูกต้องสูง ตรวจสอบย้อนกลับได้ และอัปเดตทันต่อการใช้งาน</label>
         </div>
       </div>
 
@@ -365,7 +365,7 @@
           <label class="opt"><input type="radio" name="q4" value="0">อยู่ในกระดาษ/หัวคน ดึงไม่ได้</label>
           <label class="opt"><input type="radio" name="q4" value="1">อยู่ใน Excel กระจัดกระจาย ต้องรวมเอง</label>
           <label class="opt"><input type="radio" name="q4" value="2">อยู่ในระบบ ดึงได้แต่ต้องขอ/ใช้เวลา</label>
-          <label class="opt"><input type="radio" name="q4" value="3">รวมศูนย์ ดึงมาวิเคราะห์ได้ทันที</label>
+          <label class="opt"><input type="radio" name="q4" value="3">ดึงข้อมูลที่จำเป็นได้สะดวก พร้อมนำไปวิเคราะห์</label>
         </div>
       </div>
     </div>
@@ -390,10 +390,10 @@
       <div class="q" data-q="q6">
         <p class="q-text">Q6. ระบบต่างๆ คุยกันได้แค่ไหน?</p>
         <div class="options">
-          <label class="opt"><input type="radio" name="q6" value="0">ต่างคนต่างอยู่ ต้อง key ซ้ำ</label>
-          <label class="opt"><input type="radio" name="q6" value="1">เชื่อมบางส่วน ยังมี manual เชื่อม</label>
-          <label class="opt"><input type="radio" name="q6" value="2"><span class="opt-body">ระบบหลักเชื่อมกันได้ <span class="opt-hint">(ตัวอย่าง: ระบบคลังกับระบบขาย/บัญชี เชื่อมกันอัตโนมัติ)</span></span></label>
-          <label class="opt"><input type="radio" name="q6" value="3">เชื่อมทั้งหมด ข้อมูลไหลอัตโนมัติ</label>
+          <label class="opt"><input type="radio" name="q6" value="0"><span class="opt-body">แทบไม่เชื่อมกันเลย ต้อง key ซ้ำเกือบทุกระบบ <span class="opt-hint">(ความเชื่อมกัน ~0-20%)</span></span></label>
+          <label class="opt"><input type="radio" name="q6" value="1"><span class="opt-body">บางระบบมีการเชื่อมต่อกันแล้ว แต่งานส่วนใหญ่ยังเป็น manual <span class="opt-hint">(ความเชื่อมกัน ~20-50%)</span></span></label>
+          <label class="opt"><input type="radio" name="q6" value="2"><span class="opt-body">ระบบในการทำงานส่วนใหญ่มีการเชื่อมกันแล้ว <span class="opt-hint">(ความเชื่อมกัน ~50-80%)</span></span></label>
+          <label class="opt"><input type="radio" name="q6" value="3"><span class="opt-body">ระบบในการทำงานเชื่อมต่อกันแทบทั้งหมด ข้อมูลไหลอัตโนมัติ และตรวจสอบสถานะได้ <span class="opt-hint">(ความเชื่อมกัน ~80-100%)</span></span></label>
         </div>
       </div>
     </div>
@@ -416,12 +416,12 @@
       </div>
 
       <div class="q" data-q="q8">
-        <p class="q-text">Q8. คนหน้างานพร้อมรับการเปลี่ยนแปลงแค่ไหน?</p>
+        <p class="q-text">Q8. ทีมหน้างานมีความเข้าใจและมีส่วนร่วมกับการเปลี่ยนแปลงด้านดิจิทัลหรือ AI เพียงใด?</p>
         <div class="options">
-          <label class="opt"><input type="radio" name="q8" value="0">ต้านสูง กลัวโดนแทน</label>
-          <label class="opt"><input type="radio" name="q8" value="1">เปิดรับบ้าง แต่ขาดทักษะ/ความเข้าใจ</label>
-          <label class="opt"><input type="radio" name="q8" value="2">เปิดรับและพร้อมเรียนรู้</label>
-          <label class="opt"><input type="radio" name="q8" value="3">เคยผ่านการเปลี่ยนแปลงมาก่อน ปรับตัวได้ดี</label>
+          <label class="opt"><input type="radio" name="q8" value="0">ยังมีข้อกังวลสูง และยังไม่ได้รับการสื่อสารหรือมีส่วนร่วม</label>
+          <label class="opt"><input type="radio" name="q8" value="1">เริ่มเปิดรับการเปลี่ยนแปลง แต่ยังขาดความเข้าใจหรือทักษะ</label>
+          <label class="opt"><input type="radio" name="q8" value="2">เข้าใจเป้าหมาย เปิดรับการเปลี่ยนแปลง และพร้อมเรียนรู้หรือทดลอง</label>
+          <label class="opt"><input type="radio" name="q8" value="3">เคยมีส่วนร่วมในการออกแบบหรือทดลองการเปลี่ยนแปลงทางดิจิทัลหรือ AI ขององค์กร</label>
         </div>
       </div>
     </div>
@@ -497,16 +497,17 @@
   const introStartBtn = document.getElementById('introStartBtn');
 
   function updateIntroBtn(){
-    // Required fields gate the Start button. The raffle consent checkbox is
-    // intentionally NOT part of this check — requiring it here would make
-    // "consent" coerced (no way to proceed without it), which defeats the
-    // point of it being voluntary. Consent only controls the later silent
-    // raffle submission, never whether someone can take the assessment.
+    // Name, company, and raffle consent are all required to start. Since this
+    // whole tool is presented upfront as a single bundled activity (fill info
+    // + consent to participate), the free choice is at the "use this tool or
+    // not" level — there is no partial opt-out once someone chooses to take
+    // the assessment.
     const filled = introNameInput.value.trim() !== '' && introCompanyInput.value.trim() !== '';
-    introStartBtn.disabled = !filled;
+    introStartBtn.disabled = !(filled && introConsentBox.checked);
   }
   introNameInput.addEventListener('input', updateIntroBtn);
   introCompanyInput.addEventListener('input', updateIntroBtn);
+  introConsentBox.addEventListener('change', updateIntroBtn);
 
   introStartBtn.addEventListener('click', function(){
     introName = introNameInput.value.trim();
